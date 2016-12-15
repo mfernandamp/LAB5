@@ -68,13 +68,11 @@ int main(int argc, char *argv[]){
 	fin=clock();
 	tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
 	printf("El tiempo de ejecución fue de: %f \n",tiempo); 
-	printf("hola\n");
 	file = fopen("lab05exp.txt", "a");
 	if(file == NULL)
 	{
-		printf("Error al abrir el archivo\n")
-;	}
-    printf("hola1\n");
+		printf("Error al abrir el archivo\n");
+	}
     mpz_out_str(file, 10, n);
     fprintf(file, "\t");
     mpz_out_str(file, 10 ,  B);
