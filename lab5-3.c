@@ -1,3 +1,7 @@
+//Laboratorio número 5
+
+//Librerias
+
 #include <gmp.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,7 +34,7 @@ int main(int argc, char *argv[]){
 	if (mpz_probab_prime_p(n,30) == 0){
 		do{
 			srand(time(0));
-			aleatorio = rand();
+			aleatorio = rand(); //Entrega un número aleatorio
 			gmp_randinit_mt (state);
 			gmp_randseed_ui(state,aleatorio);
 			mpz_sub_ui(tmp,n,1);
@@ -49,13 +53,13 @@ int main(int argc, char *argv[]){
 		}while(mpz_cmp(n1,n) == 0);
 	}
 	else{
-			printf("N es primo");
+			printf("N es un número primo.");
 			return 0;
 		}
 		
-	printf("El factor n1 : ");
+	printf("El factor n1 es: ");
 	gmp_printf("%Zd \n",n1);
-	printf("El factor n2 : ");
+	printf("El factor n2 es: ");
 	mpz_cdiv_q(sol,n,n1);
 	gmp_printf("%Zd \n",sol);
 	printf("El valor de B es : ");
@@ -64,12 +68,16 @@ int main(int argc, char *argv[]){
 	fin=clock();
 	tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
 	printf("El tiempo de ejecución fue de: %f \n",tiempo); 
-	file = fopen("algoritmopollard.txt", "n");
-    if(file == NULL)
-    {
-        printf("Error al abrir archivo");
-    }
-    mpz_out_str(file, 10, n1);
+	printf("hola\n");
+	file = fopen("lab05exp.txt", "a");
+	if(file == NULL)
+	{
+		printf("Error al abrir el archivo\n")
+;	}
+    printf("hola1\n");
+    mpz_out_str(file, 10, n);
+    fprintf(file, "\t");
+    mpz_out_str(file, 10 ,  B);
     fprintf(file,"\t %F \n",tiempo);
     fclose(file);
 
